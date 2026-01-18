@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Value | Rocky House of Essentials</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { 
+            --gold: #d4af37; 
+            --onyx: #0a0a0a; 
+            --white: #ffffff;
+            --soft-gray: #fcfcfc;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--white); 
+            color: var(--onyx); 
+            line-height: 1.8;
+        }
+
+        /* LUXURY NAV */
+        .luxury-nav {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--onyx);
+        }
+
+        /* HEADER */
+        .terms-header {
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: var(--soft-gray);
+        }
+
+        .terms-header span {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .terms-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.1;
+        }
+
+        /* CONTENT SECTION */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+
+        .value-section {
+            margin-bottom: 60px;
+        }
+
+        .value-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .value-section p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .terms-list {
+            list-style: none;
+        }
+
+        .terms-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .terms-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--onyx);
+            color: white;
+            text-align: center;
+            padding: 60px 5%;
+            margin-top: 40px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .terms-header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="luxury-nav">
+        <a href="index.html" class="brand-logo">ROCKY HOUSE</a>
+        <a href="shop.html" style="color: var(--gold); text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px;">BACK TO SHOP</a>
+    </nav>
+
+    <header class="terms-header">
+        <span>Our Philosophy</span>
+        <h1>Terms of Value</h1>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="value-section">
+            <h2>1. Adaptability & Flexibility</h2>
+            <p>At Rocky House of Essentials, we believe luxury should serve your lifestyle. Our items are curated to transition seamlessly from professional environments to leisure settings, ensuring you remain prepared for every occasion.</p>
+        </section>
+
+        <section class="value-section">
+            <h2>2. Quality Assurance</h2>
+            <p>Every "Essential" is hand-selected. We prioritize durability and premium materials—whether it is the thread count in our Signature Suits or the battery longevity in our Solar Utilities.</p>
+        </section>
+
+        <section class="value-section">
+            <h2>3. Nationwide Delivery</h2>
+            <ul class="terms-list">
+                <li>We deliver across all regions in Ghana.</li>
+                <li>Delivery timelines are communicated upon order finalization via our Concierge.</li>
+                <li>Shipping costs are calculated based on location and bulk weight.</li>
+            </ul>
+        </section>
+
+        <section class="value-section">
+            <h2>4. Wholesale & Retail</h2>
+            <p>We operate as both a boutique and a supplier. For wholesale inquiries (bulk purchases of suits, sets, or solar units), special pricing tiers apply. Contact our concierge directly to discuss volume discounts.</p>
+        </section>
+
+        <section class="value-section">
+            <h2>5. Returns & Exchanges</h2>
+            <p>Due to the bespoke nature of our curated selections, we ensure full verification before shipping. Exchanges are handled on a case-by-case basis within 48 hours of delivery, provided items are in original condition.</p>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">Return Home</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 ROCKY HOUSE OF ESSENTIALS</p>
+        <p style="font-size: 0.7rem; color: #666; margin-top: 10px; letter-spacing: 1px;">DEFINING MODERN LUXURY</p>
+    </footer>
+
+</body>
+</html>

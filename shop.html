@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Shop | Rocky House of Essentials</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <style>
+        :root { --gold: #f39c12; --onyx: #0a0a0a; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #ffffff; color: var(--onyx); }
+
+        /* LUXURY NAVBAR */
+        .navbar { 
+            display: flex; justify-content: flex-end; align-items: center; 
+            padding: 25px 5%; position: fixed; width: 100%; top: 0; z-index: 1000; 
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+        }
+        
+        /* THE MASSIVE BASKET */
+        .cart-link { 
+            position: relative; color: var(--gold); font-size: 3.5rem; 
+            text-decoration: none; transition: 0.3s; 
+            display: flex; align-items: center;
+        }
+        .cart-badge { 
+            position: absolute; top: 2px; right: -5px; 
+            background: var(--onyx); color: white; 
+            font-size: 1rem; padding: 5px 12px; border-radius: 50%; 
+            font-weight: 800; border: 2px solid var(--gold);
+        }
+
+        /* PREMIUM WRITE-UP SECTION */
+        .premium-intro {
+            margin-top: 100px;
+            padding: 80px 10% 60px;
+            text-align: center;
+        }
+        .brand-name-bold {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: var(--onyx);
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .premium-intro h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 25px;
+        }
+        .premium-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .premium-intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* DELIVERY & WHOLESALE LABELS */
+        .business-tags {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .business-tags span i { margin-right: 8px; }
+
+        /* BOLD FILTER BAR */
+        .filter-container { 
+            display: flex; justify-content: center; gap: 12px; 
+            padding: 20px 5%; background: white; position: sticky; 
+            top: 0; z-index: 900; border-bottom: 1px solid #eee;
+            overflow-x: auto; white-space: nowrap;
+        }
+        .filter-btn {
+            padding: 15px 30px; border: 1px solid #ddd; background: white;
+            cursor: pointer; font-size: 0.85rem; letter-spacing: 1px;
+            text-transform: uppercase; transition: 0.3s; font-weight: 800;
+        }
+        .filter-btn.active { background: var(--onyx); color: white; border-color: var(--onyx); }
+
+        /* PRODUCT GRID */
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 20px; padding: 40px 5% 100px; max-width: 1400px; margin: 0 auto; 
+        }
+
+        .product-card {
+            height: 550px; position: relative; overflow: hidden;
+            display: flex; align-items: flex-end; border-radius: 4px; cursor: pointer;
+        }
+        .product-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+        .product-card:hover .product-img { transform: scale(1.08); }
+        
+        .card-overlay { 
+            position: absolute; inset: 0; 
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 15%, transparent 60%); 
+            z-index: 1; 
+        }
+
+        .product-info { 
+            position: relative; width: 100%; padding: 35px; 
+            z-index: 2; color: white;
+        }
+        .product-cat { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px; font-weight: 700; }
+        .product-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; margin-bottom: 25px; }
+        
+        .add-btn {
+            background: var(--gold); color: white; border: none;
+            padding: 15px 25px; font-weight: 800; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+            width: 100%; transition: 0.3s;
+        }
+        .add-btn:hover { background: white; color: var(--onyx); }
+
+        /* FULL SCREEN MODAL */
+        .modal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.98);
+            display: none; justify-content: center; align-items: center;
+            z-index: 3000; cursor: zoom-out;
+        }
+        .modal img { max-width: 95%; max-height: 90vh; object-fit: contain; }
+        .modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 3.5rem; cursor: pointer; }
+
+        @media (max-width: 600px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .brand-name-bold { font-size: 3.5rem; letter-spacing: 8px; }
+            .cart-link { font-size: 2.8rem; }
+            .business-tags { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img id="modalImg" src="">
+    </div>
+
+    <nav class="navbar">
+        <a href="selection.html" class="cart-link">
+            <i class="fas fa-shopping-basket"></i>
+            <span class="cart-badge" id="cartCount">0</span>
+        </a>
+    </nav>
+
+    <div class="content-wrapper">
+        <header class="premium-intro">
+            <div class="brand-name-bold">ROCKY</div>
+            <h1>House of Essentials</h1>
+            <h2>Adaptability. Flexibility. Quality.</h2>
+            <p>Bespoke luxury tailored for the modern individual. Discover our curated collections designed for those who demand excellence in every essential.</p>
+            
+            <div class="business-tags">
+                <span><i class="fas fa-truck"></i> Nationwide Delivery</span>
+                <span><i class="fas fa-box-open"></i> Wholesale & Retail Available</span>
+            </div>
+        </header>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterShop('all')">All Essentials</button>
+            <button class="filter-btn" onclick="filterShop('suit')">Signature Suits</button>
+            <button class="filter-btn" onclick="filterShop('collection')">Leisure Set</button>
+            <button class="filter-btn" onclick="filterShop('solar')">Solar Utilities</button>
+            <button class="filter-btn" onclick="filterShop('books')">Books</button>
+        </div>
+
+        <section class="product-grid" id="productGrid"></section>
+    </div>
+
+    <script>
+        // INITIAL FIXED PRODUCTS
+        const initialProducts = [
+            { id: 's1', name: 'The Royal Malachite Suit', cat: 'suit', img: 'suit1.jpg' },
+            { id: 's2', name: 'The Azure Plaid Executive', cat: 'suit', img: 'suit2.jpg' },
+            { id: 's3', name: 'The Dynasty Gold Tuxedo', cat: 'suit', img: 'suit3.jpg' },
+            { id: 's4', name: 'The Bordeaux Peak Lapel', cat: 'suit', img: 'suit4.jpg' },
+            { id: 's5', name: 'The Executive Anthracite', cat: 'suit', img: 'suit5.jpg' },
+            { id: 's6', name: 'The Majestic Mulberry Suit', cat: 'suit', img: 'suit6.jpg' },
+            { id: 's7', name: 'The Obsidian Velvet Suit', cat: 'suit', img: 'suit7.jpg' },
+            { id: 's8', name: 'The Sky Silk-Blend Suit', cat: 'suit', img: 'suit8.jpg' },
+            { id: 's9', name: 'The Midnight Sapphire Suit', cat: 'suit', img: 'suit9.jpg' },
+            { id: 's10', name: 'The Imperial Charcoal Suit', cat: 'suit', img: 'suit10.jpg' },
+            { id: 's11', name: 'The Sovereign Grey Plaid', cat: 'suit', img: 'suit11.jpg' },
+            { id: 's12', name: 'The Sterling Silver Suit', cat: 'suit', img: 'suit12.jpg' },
+            { id: 's13', name: 'The Onyx Gala Tuxedo', cat: 'suit', img: 'suit13.jpg' },
+            { id: 's14', name: 'The Crimson Peak Suit', cat: 'suit', img: 'suit14.jpg' },
+            { id: 's15', name: 'The Hunter Green Double Breasted', cat: 'suit', img: 'suit15.jpg' },
+            { id: 'l1', name: 'The Ivory Knit Leisure Set', cat: 'collection', img: 'sets1.jpg' },
+            { id: 'l2', name: 'The Sovereign Onyx Two-Piece', cat: 'collection', img: 'sets2.jpg' },
+            { id: 'l3', name: 'The Imperial Alabaster Set', cat: 'collection', img: 'sets3.jpg' },
+            { id: 'l4', name: 'The Cobalt Urban Leisure', cat: 'collection', img: 'sets4.jpg' },
+            { id: 'l5', name: 'The Botanical Gallery Set', cat: 'collection', img: 'sets5.jpg' },
+            { id: 'l6', name: 'The Saffron Horizon Set', cat: 'collection', img: 'sets6.jpg' },
+            { id: 'l7', name: 'The Rosewood Geometric Set', cat: 'collection', img: 'sets7.jpg' },
+            { id: 'l8', name: 'The Highland Combat Set', cat: 'collection', img: 'sets8.jpg' },
+            { id: 'l9', name: 'The Espresso Lattice Set', cat: 'collection', img: 'sets9.jpg' },
+            { id: 'l10', name: 'The Slate Minimalist Set', cat: 'collection', img: 'sets10.jpg' },
+            { id: 'l11', name: 'The Midnight Mesh Knit', cat: 'collection', img: 'sets11.jpg' },
+            { id: 'l12', name: 'The Terracotta Ribbed Polo', cat: 'collection', img: 'sets12.jpg' },
+            { id: 'l13', name: 'The Arctic White Eagle Set', cat: 'collection', img: 'sets13.jpg' },
+            { id: 'l14', name: 'The Desert Sand Active Set', cat: 'collection', img: 'sets14.jpg' },
+            { id: 'l15', name: 'The Forest Green Zip Polo', cat: 'collection', img: 'sets15.jpg' },
+            { id: 'l16', name: 'The Onyx Side-Stripe Set', cat: 'collection', img: 'sets16.jpg' },
+            { id: 'l17', name: 'The Golden Batik Kaftan', cat: 'collection', img: 'sets17.jpg' },
+            { id: 'l18', name: 'The Zenith White Lounge', cat: 'collection', img: 'sets18.jpg' },
+            { id: 'l19', name: 'The Mocha Ribbed Set', cat: 'collection', img: 'sets19.jpg' },
+            { id: 'l20', name: 'The Classic Noir Set', cat: 'collection', img: 'sets20.jpg' },
+            { id: 'l21', name: 'The Crimson Urban Set', cat: 'collection', img: 'sets21.jpg' },
+            { id: 'l22', name: 'The Emerald Knit Polo', cat: 'collection', img: 'sets22.jpg' },
+            { id: 'l23', name: 'The Royal Blue Signature', cat: 'collection', img: 'sets23.jpg' },
+            { id: 'l24', name: 'The Pearl White Leisure', cat: 'collection', img: 'sets24.jpg' },
+            { id: 'l25', name: 'The Midnight Galaxy Set', cat: 'collection', img: 'sets25.jpg' },
+            { id: 'f1', name: 'The Helios Aero Utility', cat: 'solar', img: 'fan1.jpg' },
+            { id: 'f2', name: 'The Apollo Solar Blade', cat: 'solar', img: 'fan2.jpg' },
+            { id: 'f3', name: 'The Zenith Solar Tower', cat: 'solar', img: 'fan3.jpg' },
+            { id: 'f4', name: 'The Solar Flux Utility', cat: 'solar', img: 'fan4.jpg' },
+            { id: 'f5', name: 'The Aurora Solar Fan', cat: 'solar', img: 'fan5.jpg' },
+            { id: 'f6', name: 'The Titan Power Fan', cat: 'solar', img: 'fan6.jpg' },
+            { id: 'f7', name: 'The Solar Mist Utility', cat: 'solar', img: 'fan7.jpg' },
+            { id: 'f8', name: 'The Aero Prime Solar', cat: 'solar', img: 'fan8.jpg' },
+            { id: 'f9', name: 'The Helios Pro Max', cat: 'solar', img: 'fan9.jpg' },
+            { id: 'f10', name: 'The Solar Ray Utility', cat: 'solar', img: 'fan10.jpg' },
+            { id: 'b1', name: 'The Scholar Signature Series', cat: 'books', img: 'book1.jpg' },
+            { id: 'b2', name: 'The Scholar Executive Journal', cat: 'books', img: 'book2.jpg' },
+            { id: 'b3', name: 'The Scholar Pastel Series', cat: 'books', img: 'book3.jpg' },
+            { id: 'b4', name: 'The Essential Volume Series', cat: 'books', img: 'book4.jpg' },
+            { id: 'b5', name: 'The Academic Ivory Journal', cat: 'books', img: 'book5.jpg' },
+            { id: 'b6', name: 'The Scholar Midnight Edition', cat: 'books', img: 'book6.jpg' },
+            { id: 'b7', name: 'The Heritage Linen Journal', cat: 'books', img: 'book7.jpg' },
+            { id: 'b8', name: 'The Scholar Forest Series', cat: 'books', img: 'book8.jpg' },
+            { id: 'b9', name: 'The Modern Scholar Journal', cat: 'books', img: 'book9.jpg' },
+            { id: 'b10', name: 'The Scholar Masterpiece Series', cat: 'books', img: 'book10.jpg' }
+        ];
+
+        let allProducts = [...initialProducts];
+
+        // LOAD DYNAMIC PRODUCTS FROM CMS
+        async function loadCMSProducts() {
+            try {
+                const response = await fetch('/data/products/index.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data.items) {
+                        // Add IDs to CMS items so they can be added to cart
+                        const cmsItems = data.items.map((item, index) => ({
+                            id: `cms-${index}`,
+                            name: item.title,
+                            cat: item.category,
+                            img: item.image
+                        }));
+                        // Put new items at the beginning
+                        allProducts = [...cmsItems, ...initialProducts];
+                    }
+                }
+            } catch (e) {
+                console.log("No dynamic products found yet or folder is empty.");
+            }
+            displayProducts('all');
+        }
+
+        function displayProducts(filter = 'all') {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? allProducts : allProducts.filter(p => p.cat === filter);
+            
+            filtered.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card" onclick="openModal('${p.img}')">
+                        <img src="${p.img}" class="product-img" onerror="this.src='https://via.placeholder.com/600x800?text=Rocky+Essential'">
+                        <div class="card-overlay"></div>
+                        <div class="product-info">
+                            <div class="product-cat">${p.cat.toUpperCase().replace('COLLECTION', 'LEISURE')}</div>
+                            <h3 class="product-title">${p.name}</h3>
+                            <button class="add-btn" onclick="event.stopPropagation(); addToCart('${p.id}')">Add to Selection</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function openModal(imgSrc) {
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        function filterShop(cat) {
+            displayProducts(cat);
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.onclick.toString().includes(`'${cat}'`)) btn.classList.add('active');
+            });
+        }
+
+        function addToCart(id) {
+            let cart = JSON.parse(localStorage.getItem('rocky_cart')) || [];
+            const item = allProducts.find(p => p.id === id);
+            if(item) {
+                cart.push(item);
+                localStorage.setItem('rocky_cart', JSON.stringify(cart));
+                document.getElementById('cartCount').innerText = cart.length;
+            }
+            
+            const btn = event.target;
+            const originalText = btn.innerText;
+            btn.innerText = "ADDED ✓";
+            btn.style.background = "white";
+            btn.style.color = "black";
+            setTimeout(() => { 
+                btn.innerText = originalText; 
+                btn.style.background = ""; 
+                btn.style.color = "";
+            }, 1000);
+        }
+
+        window.onload = () => {
+            loadCMSProducts(); // Fetches dynamic items then calls displayProducts
+            const cart = JSON.parse(localStorage.getItem('rocky_cart')) || [];
+            document.getElementById('cartCount').innerText = cart.length;
+        };
+    </script>
+
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+
+</body>
+</html>

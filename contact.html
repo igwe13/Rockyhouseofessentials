@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Rocky House of Essentials</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { 
+            --gold: #d4af37; 
+            --onyx: #0a0a0a; 
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--onyx); 
+            color: var(--white); 
+            line-height: 1.6;
+        }
+
+        /* LUXURY NAV */
+        .luxury-nav {
+            padding: 40px 5%;
+            display: flex;
+            justify-content: center;
+            background: transparent;
+            position: absolute;
+            width: 100%;
+            top: 0;
+        }
+
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        /* CONTACT SECTION */
+        .contact-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 10% 60px;
+            text-align: center;
+        }
+
+        .contact-header span {
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .contact-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 7vw, 4rem);
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .contact-header p {
+            font-size: 0.9rem;
+            color: #888;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .contact-card {
+            padding: 50px 30px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.4s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .contact-card i {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        .contact-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .contact-card p {
+            font-weight: 300;
+            color: #999;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-link {
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 5px;
+            transition: 0.3s;
+        }
+
+        /* ACCRA FOOTER */
+        .location-footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .location-footer h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .location-footer p {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.7rem;
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="luxury-nav">
+        <a href="index.html" class="brand-logo">ROCKY HOUSE OF ESSENTIALS</a>
+    </nav>
+
+    <main class="contact-container">
+        <div class="contact-header">
+            <span>Premium Essentials Only</span>
+            <h1>Inquiries & Sales</h1>
+            <p>Accra, Ghana</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fab fa-whatsapp"></i>
+                <h3>Sales Liaison</h3>
+                <p>Directly confirm availability of Suits, Leisure Sets, and Solar Essentials via WhatsApp.</p>
+                <a href="https://wa.me/233241520909" class="contact-link">Order via WhatsApp</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fas fa-boxes"></i>
+                <h3>Bulk Acquisitions</h3>
+                <p>Inquire about corporate stationery supplies or large volume solar utility orders.</p>
+                <a href="mailto:sales@rockyessentials.com" class="contact-link">Email the Sales Desk</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="far fa-clock"></i>
+                <h3>Store Hours</h3>
+                <p>Monday — Saturday<br>09:00 — 21:00 GMT</p>
+                <span style="font-size: 0.65rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase;">Shipping Nationwide from Accra</span>
+            </div>
+        </div>
+
+        <footer class="location-footer">
+            <h4>ACCRA, GHANA</h4>
+            <p>Quality You Can Trust</p>
+        </footer>
+    </main>
+
+</body>
+</html>
