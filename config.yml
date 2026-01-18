@@ -1,32 +1,21 @@
 backend:
   name: git-gateway
-  branch: main # Ensure this matches your GitHub branch (usually main)
+  branch: main # Change to 'master' if your GitHub branch is named master
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+site_url: https://rockyhouseofessentials.netlify.app
+display_url: https://rockyhouseofessentials.netlify.app
 
 collections:
-  - name: "products_data"
-    label: "Inventory Management"
-    delete: false # Prevents accidental deletion of the whole file
-    editor:
-      preview: false
-    files:
-      - label: "Live Shop Products"
-        name: "all_products"
-        file: "data/products/index.json"
-        fields:
-          - name: items
-            label: "Product List"
-            widget: list
-            summary: '{{title}} ({{category}})'
-            fields:
-              - { label: "Product Name", name: "title", widget: "string", hint: "e.g., The Royal Malachite Suit" }
-              - { label: "Category", name: "category", widget: "select", options: [
-                  {label: "Signature Suits", value: "suit"},
-                  {label: "Leisure Sets", value: "collection"},
-                  {label: "Solar Utilities", value: "solar"},
-                  {label: "Stationery/Books", value: "books"}
-                ]}
-              - { label: "Product Image", name: "image", widget: "image" }
-              - { label: "Brief Description", name: "body", widget: "string", required: false }
+  - name: "products"
+    label: "Suits & Items"
+    folder: "data/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Price", name: "price", widget: "string" }
+      - { label: "Product Image", name: "image", widget: "image" }
+      - { label: "Description", name: "body", widget: "markdown" }
