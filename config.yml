@@ -1,21 +1,20 @@
 backend:
   name: git-gateway
-  branch: main # Change to 'master' if your GitHub branch is named master
+  branch: main # If your GitHub says 'master', change this to master
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
 
 site_url: https://rockyhouseofessentials.netlify.app
-display_url: https://rockyhouseofessentials.netlify.app
 
 collections:
   - name: "products"
-    label: "Suits & Items"
+    label: "Inventory"
     folder: "data/products"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Product Name", name: "title", widget: "string" }
+      - { label: "Item Name", name: "title", widget: "string" }
       - { label: "Price", name: "price", widget: "string" }
-      - { label: "Product Image", name: "image", widget: "image" }
+      - { label: "Upload Photo/Video", name: "image", widget: "image" }
       - { label: "Description", name: "body", widget: "markdown" }
