@@ -1,9 +1,9 @@
 [build]
-  command = "cecil build"
   publish = "_site"
+  command = "curl -sSOL https://cecil.app/build.sh && bash ./build.sh"
 
 [build.environment]
-  CECIL_VERSION = "2.x"
+  PHP_VERSION = "8.2"
 
-[[plugins]]
-  package = "netlify-plugin-cecil"
+[context.production.environment]
+  CECIL_ENV = "production"
